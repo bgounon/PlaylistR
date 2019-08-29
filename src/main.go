@@ -5,8 +5,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
-	"strings"
 
 	"google.golang.org/api/option"
 	"google.golang.org/api/youtube/v3"
@@ -20,16 +18,10 @@ type YTVideo struct {
 
 func main() {
 
-	var playListID string
+	var playListID, apiKey string
 	flag.StringVar(&playListID, "id", "", "Playlist ID")
-
+	flag.StringVar(&apiKey, "api", "", "Youtube API Key")
 	flag.Parse()
-
-	b, err := ioutil.ReadFile(".APIKEY")
-	if err != nil {
-		fmt.Print(err)
-	}
-	apiKey := strings.TrimSuffix(string(b), "\n")
 
 	ctx := context.Background()
 	youtubeService, err := youtube.NewService(ctx, option.WithAPIKey(apiKey))
