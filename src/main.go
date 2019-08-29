@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"strings"
@@ -19,6 +20,11 @@ type YTVideo struct {
 
 func main() {
 
+	var playListID string
+	flag.StringVar(&playListID, "id", "", "Playlist ID")
+
+	flag.Parse()
+
 	b, err := ioutil.ReadFile(".APIKEY")
 	if err != nil {
 		fmt.Print(err)
@@ -30,8 +36,6 @@ func main() {
 	if err != nil {
 		fmt.Print(err)
 	}
-
-	playListID := "PLxctXAfeP5AHQ_LMXVET5FJYs8OVQFEIN"
 
 	call := youtubeService.PlaylistItems.List("snippet")
 	call = call.PlaylistId(playListID)
