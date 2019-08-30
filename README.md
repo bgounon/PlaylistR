@@ -1,6 +1,6 @@
 # PlaylistR
 
-[DockerHub](https://hub.docker.com/r/psyqqow/playlistr)
+[DockerHub](https://hub.docker.com/r/bgounon/playlistr)
 [GitHub](https://github.com/bgounon/PlaylistR)
 
 ### Example :
